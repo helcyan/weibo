@@ -16,10 +16,6 @@
 });*/
 
 
-Route::group(['middleware'=>['mylimit','throttle:10,1']],function (){
-    Route::get('/', function () {
-        return view('welcome');
-    });
-
-});
-
+Route::get('/','StaticPagesController@home');
+Route::get('/help','StaticPagesController@help');
+Route::get('/about','StaticPagesController@about');
