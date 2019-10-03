@@ -18,4 +18,14 @@ class UsersController extends Controller
     {
         return view('users.show',compact('user'));
     }
+
+    //表单数据
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'name'      =>      'required|max:50',
+            'password'  =>      'required|email|unique:users|max:255',      //unique:users 验证users表中email的唯一性
+            'email'     =>      'required|confirmed|min:6'                 //confirmed 验证两次输入的密码是否一致
+        ]);
+    }
 }
